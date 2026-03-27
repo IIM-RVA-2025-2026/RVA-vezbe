@@ -1,0 +1,8 @@
+-- Artikl podaci
+insert into artikl (id, naziv, proizvodjac)
+values (nextval('artikl_seq'), 'Moja Kravica dugotrajno mleko, 'AD Imlek'),
+       (nextval('artikl_seq'), 'Moja Kravica jogurt', 'AD Imlek'),
+       (nextval('artikl_seq'), 'Persil Regular prasak', 'Henkel Srbija d.o.o.'),
+       (nextval('artikl_seq'), 'Jabuka Gala', 'Delhaize Serbia d.o.o.'),
+       (nextval('artikl_seq'), 'Puding vanila Dr. Oetker', 'Dr. Oetker d.o.o.'),
+       (nextval('artikl_seq'), 'Puding cokolada Dr. Oetker', 'Dr. Oetker d.o.o.');

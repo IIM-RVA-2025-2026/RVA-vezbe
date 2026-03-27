@@ -1,0 +1,5 @@
+spring.application.name=rva-backend
+
+spring.jpa.database = POSTGRESQL
+spring.sql.init.platform = postgres
+spring.datasource.driver-class-name = org.postgresql.Driver

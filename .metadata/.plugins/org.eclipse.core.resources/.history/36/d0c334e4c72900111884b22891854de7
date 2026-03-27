@@ -1,0 +1,30 @@
+spring.application.name=rva-backend
+
+#Blok parametara za podešavanje konekcije na bazu podataka
+spring.jpa.database = POSTGRESQL
+spring.sql.init.platform = postgres
+spring.datasource.driver-class-name = org.postgresql.Driver
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+
+#podešavanje konekcije na BP u ITC RC
+spring.datasource.url = jdbc:postgresql://localhost:5432/rva-iim-26
+spring.datasource.username = postgres
+spring.datasource.password = postgres
+
+#podešavanje konekcije kod kući
+#spring.datasource.url = jdbc:postgresql://localhost:5432/nazivBaze
+#spring.datasource.username = postgres
+#spring.datasource.password = postgres
+
+server.port = 8082
+
+#naredne komande nam omogucavaju funkcije za automatsko ddl generisanje (omogucavaju nam da se u bazi kreiraju
+#tabele na osnovu JPA klasa). Prvom linijom koda omogucavamo generisanje ddl naredbi, a drugom obezbjedjujemo funkciju hibernacije
+#funkcijom hibernacije, izmedju ostalog, omogucavam automatsko pokretanje dokumenta import.sql (dokument sa insert naredbama)
+spring.jpa.generate-ddl=true
+spring.jpa.hibernate.ddl-auto=create
+spring.sql.init.mode=always
+spring.jpa.defer-datasource-initialization=true
+
+#podesavanje koja omogucava da se tokom rada aplikacije, prikazuju SQL komande na konzoli
+spring.jpa.show-sql=true

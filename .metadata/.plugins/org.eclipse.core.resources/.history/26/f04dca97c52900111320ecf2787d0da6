@@ -1,0 +1,14 @@
+package rva_backend.models;
+
+import jakarta.persistence.Entity;
+
+@Entity
+public class Artikl {
+	
+	private int id;
+	private String naziv;
+	private String proizvodjac;
+	
+	
+
+}

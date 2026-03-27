@@ -1,0 +1,28 @@
+spring.application.name=rva-backend
+
+#Blok parametara za podešavanje konekcije na bazu podataka
+spring.jpa.database = POSTGRESQL
+spring.sql.init.platform = postgres
+spring.datasource.driver-class-name = org.postgresql.Driver
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+
+#podešavanje konekcije na BP u ITC RC
+spring.datasource.url = jdbc:postgresql://10.1.231.54:5432/postgres
+spring.datasource.username = postgres
+spring.datasource.password = postgres
+
+#podešavanje konekcije na BP u ITC RC
+#spring.datasource.url = jdbc:postgresql://localhost:5432/nazivBaze
+#spring.datasource.username = postgres
+#spring.datasource.password = postgres
+
+server.port = 8082
+
+spring.jpa.generate-ddl=true
+spring.jpa.hibernate.ddl-auto=create
+spring.sql.init.mode=always
+spring.sql.init.data-locations=classpath:data.sql
+spring.jpa.defer-datasource-initialization=true
+spring.jpa.show-sql=true
+logging.level.org.hibernate.SQL=DEBUG
+logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
