@@ -1,0 +1,12 @@
+package rva_backend.service;
+
+import org.springframework.stereotype.Service;
+
+import rva_backend.repository.ArtiklRepository;
+
+@Service
+public class ArtiklService {
+	
+	
+	private ArtiklRepository artiklRepository;
+}

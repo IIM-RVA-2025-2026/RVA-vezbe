@@ -1,0 +1,29 @@
+package rva_backend.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import rva_backend.models.Artikl;
+import rva_backend.service.ArtiklService;
+
+@RestController
+public class ArtiklController {
+	
+	@Autowired
+	private ArtiklService service;
+	
+	@GetMapping("/artikl")
+	public List<Artikl> getAll() {
+		return service.getAll();
+	}
+	
+	@GetMapping("/artikl/{id}")
+	public Optional<Artikl> getOne(Integer id) {
+		return service.findById(id);
+	}
+
+}

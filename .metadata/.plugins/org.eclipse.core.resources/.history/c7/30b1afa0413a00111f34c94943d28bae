@@ -1,0 +1,12 @@
+package rva_backend.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import rva_backend.models.Artikl;
+
+public interface ArtiklRepository extends JpaRepository<Artikl, Integer>{
+	
+	List<Artikl> findByNazivContainingIgnoreCase(String naziv);
+}

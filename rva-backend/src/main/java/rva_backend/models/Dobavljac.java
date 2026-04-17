@@ -1,9 +1,15 @@
 package rva_backend.models;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
@@ -16,6 +22,14 @@ public class Dobavljac {
 	private String naziv;
 	private String adresa;
 	private String kontakt;
+	
+	@OneToMany(mappedBy="dobavljac", cascade = CascadeType.ALL)
+	@JsonIgnore
+	private List<Porudzbina> porudzbinas;
+	
+	public Dobavljac() {
+		
+	}
 	
 	public Dobavljac(int id, String naziv, String adresa, String kontakt) {
 		this.id = id;

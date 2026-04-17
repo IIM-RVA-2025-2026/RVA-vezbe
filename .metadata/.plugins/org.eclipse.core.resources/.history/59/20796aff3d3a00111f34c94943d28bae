@@ -1,0 +1,5 @@
+package rva_backend.service;
+
+public class ArtiklService {
+
+}
