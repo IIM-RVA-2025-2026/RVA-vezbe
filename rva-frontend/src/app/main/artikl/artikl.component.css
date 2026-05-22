@@ -1,0 +1,10 @@
+.data {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.data-paragraph {
+    font-size: 16px;
+    line-height: 1.2;
+}

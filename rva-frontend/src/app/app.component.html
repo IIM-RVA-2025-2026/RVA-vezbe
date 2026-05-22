@@ -1,1 +1,46 @@
-<h1> Ovo je frontend aplikacija. {{title}} </h1>
+<mat-sidenav-container class="example-container">
+    <mat-sidenav mode="over" [fixedInViewport]="true" opened mode="side" style="max-width: 30%">
+      <mat-accordion>
+        <a mat-button routerLink="" style="text-align: center">
+          <mat-icon>home</mat-icon>
+        </a>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title> Aplikacija </mat-panel-title>
+            <mat-panel-description>
+              Aplikacija za vođenje evidencija o porudžbinama
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <a mat-raised-button routerLink="/artikl" style="background-color: green">Artikl</a>
+          </mat-nav-list>
+          <mat-nav-list>
+            <a mat-raised-button routerLink="/dobavljac" style="background-color: orange">Dobavljač</a>
+          </mat-nav-list>
+          <mat-nav-list>
+            <a mat-raised-button routerLink="/porudzbina" style="background-color: purple">Porudžbina</a>
+          </mat-nav-list>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title style="text-align: left"
+              >Informacije</mat-panel-title
+            >
+            <mat-panel-description>
+              Osnovne informacije o aplikaciji
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <a mat-button routerLink="/about">O nama</a>
+          </mat-nav-list>
+          <mat-nav-list>
+            <a mat-button routerLink="/author">Autor</a>
+          </mat-nav-list>
+          <mat-nav-list>
+            <a mat-button routerLink="">Početna</a>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-sidenav>
+    <router-outlet></router-outlet>
+  </mat-sidenav-container>

@@ -1,0 +1,14 @@
+mat-expansion-panel{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 80px;
+}
+
+mat-sidenav{
+    background-color: rgba(128, 128, 128, 0.139);
+}
+
+a[mat-raised-button]{
+    color: white;
+}
