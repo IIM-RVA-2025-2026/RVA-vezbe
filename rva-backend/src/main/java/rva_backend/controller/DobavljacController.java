@@ -21,6 +21,7 @@ import rva_backend.models.Dobavljac;
 import rva_backend.service.DobavljacService;
 
 @RestController
+@CrossOrigin
 public class DobavljacController {
 
 @Autowired

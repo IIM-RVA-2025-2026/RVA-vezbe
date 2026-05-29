@@ -21,7 +21,6 @@ import rva_backend.models.Artikl;
 import rva_backend.service.ArtiklService;
 
 @RestController
-@CrossOrigin
 public class ArtiklController {
 	
 	@Autowired

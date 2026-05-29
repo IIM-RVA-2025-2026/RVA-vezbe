@@ -21,6 +21,7 @@ import rva_backend.models.Porudzbina;
 import rva_backend.service.PorudzbinaService;
 
 @RestController
+@CrossOrigin
 public class PorudzbinaController {
 	
     @Autowired
