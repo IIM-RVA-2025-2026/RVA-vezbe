@@ -18,7 +18,7 @@ import { ArtiklDialogComponent } from '../../dialogs/artikl-dialog/artikl-dialog
 export class ArtiklComponent implements OnInit{
 
   //artikls:Artikl[] = [];
-  dataSource!:MatTableDataSource<Artikl>;
+  dataSource:MatTableDataSource<Artikl> = new MatTableDataSource<Artikl>;
   displayedColumns = ['id', 'naziv', 'proizvodjac', 'actions'];
 
   constructor(private service:ArtiklService, private dialog:MatDialog) {}
@@ -30,7 +30,7 @@ export class ArtiklComponent implements OnInit{
   public loadData():void {
     this.service.getAllArtikls().subscribe({
       next: (data) => {
-        this.dataSource = new MatTableDataSource<Artikl>(data);
+        this.dataSource.data = data;
       },
       error:(err) => console.log(err)
     })
@@ -41,9 +41,7 @@ export class ArtiklComponent implements OnInit{
     ref.componentInstance.flag = flag;
     ref.afterClosed().subscribe(
       (response) => {
-        if(response===1) {
           this.loadData();
-        }
       }
     )
   }

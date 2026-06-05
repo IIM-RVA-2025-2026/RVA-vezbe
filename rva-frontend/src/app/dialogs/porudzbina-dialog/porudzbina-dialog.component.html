@@ -1,1 +1,115 @@
-<p>porudzbina-dialog works!</p>
+<div class="container">
+    @if (flag === 1) {
+      <h3 mat-dialog-title>Adding porudzbina</h3>
+    } @else if (flag === 2) {
+      <h3 mat-dialog-title>Updating porudzbina: {{ data.id }}</h3>
+    } @else if (flag === 3) {
+      <h3 mat-dialog-title>Deleting porudzbina: {{ data.id }}</h3>
+    }
+  
+    <form class="mat-dialog-content" #formControl="ngForm">
+      <div class="form">
+        <mat-form-field>
+          <input
+            matInput
+            [matDatepicker]="datumPorudzbine"
+            placeholder="Datum porudzbine"
+            name="datumPorudzbine"
+            [disabled]="flag == 3"
+            [(ngModel)]="data.datumPorudzbine"
+            required
+          />
+          <mat-datepicker-toggle matSuffix [for]="datumPorudzbine"></mat-datepicker-toggle>
+          <mat-datepicker #datumPorudzbine></mat-datepicker>
+        </mat-form-field>
+      </div>
+  
+      <div class="form">
+        <mat-form-field>
+          <input
+            matInput
+            [matDatepicker]="datumIsporuke"
+            placeholder="Datum Isporuke"
+            name="datumIsporuke" 
+            [disabled]="flag == 3"
+            [(ngModel)]="data.datumIsporuke"
+            required
+          />
+          <mat-datepicker-toggle matSuffix [for]="datumIsporuke"></mat-datepicker-toggle>
+          <mat-datepicker #datumIsporuke></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-checkbox
+            name="placeno"
+            [disabled]="flag==3"
+            [(ngModel)]="data.placeno"
+        >
+            Placeno
+        </mat-checkbox>
+      </div>
+
+      <div class="form">
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Iznos"
+            name="iznos"
+            [disabled]="flag == 3"
+            [(ngModel)]="data.iznos"
+            required
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-form-field>
+          <mat-select
+            [compareWith]="compare"
+            placeholder="Dobavljac"
+            name="dobavljac"
+            [disabled]="flag == 3"
+            [(ngModel)]="data.dobavljac"
+            required
+          >
+            @for(dobavljac of dobavljaci; 
+            track dobavljac.id){
+                <mat-option [value]="dobavljac">
+                  {{dobavljac.naziv}}</mat-option>
+            }
+            </mat-select>
+        </mat-form-field>
+      </div>
+    </form>
+
+    <div class="mat-dialog-actions">
+        @if (flag === 1) {
+          <button
+            matButton
+            type="submit"
+            mat-dialog-close="1"
+            [disabled]="!formControl.valid"
+            (click)="add()"
+          >
+            Save
+          </button>
+        } @else if (flag === 2) {
+          <button
+            matButton
+            type="submit"
+            mat-dialog-close="1"
+            [disabled]="!formControl.valid"
+            (click)="update()"
+          >
+            Update
+          </button>
+        } @else if (flag === 3) {
+          <button matButton mat-dialog-close="1" (click)="delete()">
+              Delete
+          </button>
+        }
+    
+        <button matButton (click)="cancel()">Cancel</button>
+      </div>
+    </div>

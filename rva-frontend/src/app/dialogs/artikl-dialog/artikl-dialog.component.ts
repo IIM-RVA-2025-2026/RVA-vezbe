@@ -25,6 +25,7 @@ export class ArtiklDialogComponent {
     ) {}
 
   public add(): void {
+    this.data.id = 0;
     this.service.createArtikl(this.data).subscribe({
       next: (data) => {
         this.dialogRef.close(1);
@@ -46,7 +47,7 @@ export class ArtiklDialogComponent {
       },
       error: (err) => {
         console.log(err);
-        this.snackBar.open(`Neuspešno izvršavanje ove aktivnosti.`), `OK`, {duration:4000};
+        this.snackBar.open(`Neuspešno izvršavanje ove aktivnosti.`, `OK`, {duration:4000});
       }
     })
   }
@@ -59,7 +60,8 @@ export class ArtiklDialogComponent {
       },
       error: (err) => {
         console.log(err);
-        this.snackBar.open(`Neuspešno izvršavanje ove aktivnosti.`), `OK`, {duration:4000};
+        
+        this.snackBar.open(`Neuspešno izvršavanje ove aktivnosti.`, `OK`, {duration:4000});
       }
     })
   }

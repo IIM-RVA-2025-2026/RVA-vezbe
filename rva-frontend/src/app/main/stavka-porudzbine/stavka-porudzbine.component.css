@@ -1,0 +1,17 @@
+table {
+    width: 100%;
+  }
+ 
+  mat-toolbar {
+    justify-content: center;
+  }
+ 
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+ 
+  mat-toolbar {
+    background-color: green;
+  }

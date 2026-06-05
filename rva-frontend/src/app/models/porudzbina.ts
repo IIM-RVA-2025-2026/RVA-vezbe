@@ -2,8 +2,8 @@ import { Dobavljac } from "./dobavljac";
 
 export class Porudzbina {
     id!:number;
-    datum!:Date;
-    isporuceno!:Date;
+    datumPorudzbine!:Date;
+    datumIsporuke!:Date;
     iznos!:number;
     placeno!:boolean;
     dobavljac!:Dobavljac;

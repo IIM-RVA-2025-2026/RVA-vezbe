@@ -1,1 +1,106 @@
-<p>stavka-porudzbine-dialog works!</p>
+<div class="container">
+    @if (flag === 1) {
+      <h3 mat-dialog-title>Adding Stavka Porudzbine</h3>
+    } @else if (flag === 2) {
+      <h3 mat-dialog-title>Updating Stavka Porudzbine: {{ data.id }}</h3>
+    } @else if (flag === 3) {
+      <h3 mat-dialog-title>Deleting Stavka Porudzbine: {{ data.id }}</h3>
+    }
+ 
+    <form class="mat-dialog-content" #formControl="ngForm">
+        <div class="form">
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Redni Broj"
+                name="redniBroj"
+                [disabled]="flag == 3"
+                [(ngModel)]="data.redniBroj"
+                required
+              />
+            </mat-form-field>
+          </div>
+          <div class="form">
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Kolicina"
+                name="kolicina"
+                [disabled]="flag == 3"
+                [(ngModel)]="data.kolicina"
+                required
+              />
+            </mat-form-field>
+          </div>
+        <div class="form">
+            <mat-form-field>
+            <input
+                matInput
+                placeholder="Jedinica mere"
+                name="jedinicaMere"
+                [disabled]="flag == 3"
+                [(ngModel)]="data.jedinicaMere"
+                required
+            />
+            </mat-form-field>
+        </div>
+        <div class="form">
+            <mat-form-field>
+            <input
+                matInput
+                placeholder="Cena"
+                name="cena"
+                [disabled]="flag == 3"
+                [(ngModel)]="data.cena"
+                required
+            />
+            </mat-form-field>
+        </div>
+        <div class="form">
+            <mat-form-field>
+            <mat-select
+                [compareWith]="compare"
+                placeholder="Artikl"
+                name="artikl"
+                [disabled]="flag == 3"
+                [(ngModel)]="data.artikl"
+                required
+            >
+                @for(artikl of artikli; track artikl.id){
+                    <mat-option [value]="artikl">{{artikl.naziv}}</mat-option>
+                }
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </form>
+ 
+    <div class="mat-dialog-actions">
+      @if (flag === 1) {
+        <button
+          matButton
+          type="submit"
+          mat-dialog-close="1"
+          [disabled]="!formControl.valid"
+          (click)="add()"
+        >
+          Save
+        </button>
+      } @else if (flag === 2) {
+        <button
+          matButton
+          type="submit"
+          mat-dialog-close="1"
+          [disabled]="!formControl.valid"
+          (click)="update()"
+        >
+          Update
+        </button>
+      } @else if (flag === 3) {
+        <button matButton mat-dialog-close="1" (click)="delete()">
+            Delete
+        </button>
+      }
+ 
+      <button matButton (click)="cancel()">Cancel</button>
+    </div>
+  </div>

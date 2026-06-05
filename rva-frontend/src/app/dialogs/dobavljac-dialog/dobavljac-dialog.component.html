@@ -1,1 +1,80 @@
-<p>dobavljac-dialog works!</p>
+<div class="container">
+    @if (flag === 1) {
+      <h3 mat-dialog-title>Adding dobavljac</h3>
+    } @else if (flag === 2) {
+      <h3 mat-dialog-title>Updating dobavljac: {{ data.naziv }}</h3>
+    } @else if (flag === 3) {
+      <h3 mat-dialog-title>Deleting dobavljac: {{ data.naziv }}</h3>
+    }
+  
+    <form class="mat-dialog-content" #formControl="ngForm">
+      <div class="form">
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Naziv"
+            name="Naziv"
+            [disabled]="flag == 3"
+            [(ngModel)]="data.naziv"
+            required
+          />
+        </mat-form-field>
+      </div>
+  
+      <div class="form">
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Kontakt"
+            name="Kontakt"
+            [disabled]="flag == 3"
+            [(ngModel)]="data.kontakt"
+            required
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Adresa"
+            name="Adresa"
+            [disabled]="flag == 3"
+            [(ngModel)]="data.adresa"
+            required
+          />
+        </mat-form-field>
+      </div>
+    </form>
+  
+    <div class="mat-dialog-actions">
+      @if (flag === 1) {
+        <button
+          matButton
+          type="submit"
+          mat-dialog-close="1"
+          [disabled]="!formControl.valid"
+          (click)="add()"
+        >
+          Save
+        </button>
+      } @else if (flag === 2) {
+        <button
+          matButton
+          type="submit"
+          mat-dialog-close="1"
+          [disabled]="!formControl.valid"
+          (click)="update()"
+        >
+          Update
+        </button>
+      } @else if (flag === 3) {
+        <button matButton mat-dialog-close="1" (click)="delete()">
+            Delete
+        </button>
+      }
+  
+      <button matButton (click)="cancel()">Cancel</button>
+    </div>
+  </div>
