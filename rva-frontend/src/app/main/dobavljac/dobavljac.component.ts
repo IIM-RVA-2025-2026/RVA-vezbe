@@ -1,9 +1,11 @@
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 import { DobavljacDialogComponent } from './../../dialogs/dobavljac-dialog/dobavljac-dialog.component';
 import { DobavljacService } from './../../services/dobavljac.service';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { Dobavljac } from '../../models/dobavljac';
 import { MatDialog } from '@angular/material/dialog';
@@ -11,19 +13,27 @@ import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-dobavljac',
   standalone: true,
-  imports: [CommonModule, MatTableModule, MatIconModule, MatToolbarModule],
+  imports: [CommonModule, MatTableModule, MatIconModule, MatToolbarModule, MatSortModule, MatPaginatorModule],
   templateUrl: './dobavljac.component.html',
   styleUrl: './dobavljac.component.css'
 })
-export class DobavljacComponent implements OnInit{
+export class DobavljacComponent implements OnInit, AfterViewInit{
 
   displayedColumns = ['id', 'naziv', 'adresa', 'kontakt', 'actions'];
   dataSource:MatTableDataSource<Dobavljac> = new MatTableDataSource<Dobavljac>;
 
   constructor(private service:DobavljacService, private dialog:MatDialog) {}
   
+  @ViewChild(MatSort) sort!:MatSort;
+  @ViewChild(MatPaginator) paginator!:MatPaginator;
+
   ngOnInit(): void {
     this.loadData();
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 
   public loadData(): void {

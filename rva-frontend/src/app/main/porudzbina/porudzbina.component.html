@@ -3,31 +3,31 @@
   </mat-toolbar>
  
   <div class="container mat-elavation-z8">
-    <table mat-table [dataSource]="dataSource" class="mat-cell">
+    <table mat-table [dataSource]="dataSource" matSort class="mat-cell">
       <!-- ID -->
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
         <td mat-cell *matCellDef="let row">{{ row.id }}</td>
       </ng-container>
  
      
       <ng-container matColumnDef="datumPorudzbine">
-        <th mat-header-cell *matHeaderCellDef>Datum Porudzbine</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Datum Porudzbine</th>
         <td mat-cell *matCellDef="let row">{{ row.datumPorudzbine | date: "dd.MM.yyyy." }}</td>
       </ng-container>
  
      
       <ng-container matColumnDef="datumIsporuke">
-        <th mat-header-cell *matHeaderCellDef>Datum Isporuke</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Datum Isporuke</th>
         <td mat-cell *matCellDef="let row">{{ row.datumIsporuke | date: "dd.MM.yyyy." }}</td>
       </ng-container>
       <ng-container matColumnDef="iznos">
-        <th mat-header-cell *matHeaderCellDef>Iznos</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Iznos</th>
         <td mat-cell *matCellDef="let row">{{ row.iznos }}</td>
       </ng-container>
       <ng-container matColumnDef="placeno">
-        <th mat-header-cell *matHeaderCellDef>Placeno</th>
-        <td mat-cell *matCellDef="let row">{{ row.placeno }}</td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Placeno</th>
+        <td mat-cell *matCellDef="let row">{{ row.placeno ? 'Da' : 'Ne' }}</td>
       </ng-container>
       <ng-container matColumnDef="dobavljac">
         <th mat-header-cell *matHeaderCellDef>Dobavljac</th>
@@ -55,6 +55,7 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="selectRow(row)"></tr>
     </table>
+    <mat-paginator [pageSizeOptions]="[3,6,9,12]" showFirstLastButton></mat-paginator>
   </div>
 
   @if(parentSelectedPorudzbina) {
